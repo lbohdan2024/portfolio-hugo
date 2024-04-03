@@ -1,0 +1,71 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+author = "Adam Warski"
+name = "Adam Warski"
+
+[params]
+  google_fonts = [
+    ["Inter", "400"],
+  ]
+
+  heading_font = "Inter"
+
+# Menus
+[menus]
+[[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+[[menus.main]]
+    name = 'About'
+    pageRef = '/about'
+    weight = 20
+[[menus.main]]
+    name = 'Blog'
+    pageRef = '/blogs'
+    weight = 30
+[[menus.main]]
+    name = 'Projects'
+    pageRef = '/projects'
+    weight = 40
+[[menus.main]]
+    name = 'Articles'
+    pageRef = '/articles'
+    weight = 50
+[[menus.main]]
+    name = 'Videos'
+    pageRef = '/videos'
+    weight = 60
+[[menus.main]]
+    name = 'Talks'
+    pageRef = '/talks'
+    weight = 70
+[[menus.footer]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+[[menus.footer]]
+    name = 'About'
+    pageRef = '/about'
+    weight = 20
+[[menus.footer]]
+    name = 'Blog'
+    pageRef = '/blogs'
+    weight = 30
+[[menus.footer]]
+    name = 'Projects'
+    pageRef = '/projects'
+    weight = 40
+[[menus.footer]]
+    name = 'Articles'
+    pageRef = '/articles'
+    weight = 50
+[[menus.footer]]
+    name = 'Videos'
+    pageRef = '/videos'
+    weight = 60
+[[menus.footer]]
+    name = 'Talks'
+    pageRef = '/talks'
+    weight = 70
