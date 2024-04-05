@@ -7,6 +7,7 @@
   <body>
     <header>{{ partial "header.html" }}</header>
     <main>{{ block "main" . }} {{ end }}</main>
+    {{ partial "script.html" . }}
     <footer>{{ partial "footer.html" . }}</footer>
   </body>
 </html>

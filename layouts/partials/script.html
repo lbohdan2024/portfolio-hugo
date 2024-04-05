@@ -1,0 +1,4 @@
+{{ range site.Params.plugins.js }}
+{{ $style := resources.Get .link }}
+<script href="{{ .link }}" type="application/javascript"></script>
+{{ end }}

@@ -4,12 +4,16 @@ title = 'My New Hugo Site'
 author = "Adam Warski"
 name = "Adam Warski"
 
+
 [params]
   google_fonts = [
     ["Inter", "400"],
   ]
 
   heading_font = "Inter"
+
+[[params.plugins.js]]
+  link = "js/tab.js"
 
 # Menus
 [menus]
