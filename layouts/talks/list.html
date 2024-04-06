@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section>
+  <div class="xl:container mx-auto pt-16 pb-24">
+    <div class="w-[768px] text-center mb-24 mx-auto">
+      <h6 class="text-base font-semibold text-[#072671] mb-3">{{ .Params.title }}</h6>
+      <h1 class="text-5xl font-semibold text-[#101828] mb-6">{{ .Params.description }}</h1>
+      <div class="text-xl text-[#475467]">{{ .Content }}</div>
+    </div>
+    <div class="mb-24">
+      <div class="grid grid-cols-2 gap-8 mb-8 mx-24">
+        {{ range .Params.talks }}
+        <div class="border border-1 border-[#A6A8AC] rounded-2xl p-6">
+          <h6 class="text-xl font-semibold text-[#101828] mb-2"># {{.number}}</h6>
+          <p class="text-sm font-semibold text-[#072671] mb-2">{{.position}} • {{.date | time.Format ":date_medium"}}</p>
+          <h4 class="text-lg font-semibold text-[#101828] mb-2">{{.title}}</h4>
+          <div class="flex items-center">
+          {{ range .files }}
+            <a class="text-2xl text-[#072671] mr-2" href="{{.link}}"><i class="{{.icon}}"></i></a>
+          {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      <img src="{{.Params.image}}" width="100%" height="100%">
+    </div>
+    <div class="flex justify-between bg-[#F9FAFB] rounded-2xl p-16">
+      <div>
+        <h1 class="text-3xl font-semibold text-[#101828] mb-2">Still have questions?</h1>
+        <p class="text-lg text-[#475467]">Can’t find the answer you’re looking for? Please chat to me.</p>
+      </div>
+      <button class="bg-[#0A39AA] h-full rounded-md text-base text-white text-md leading-6 px-4 py-3">Get in touch</button>
+    </div>
+  </div>
+</section>
+{{ end }}

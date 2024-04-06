@@ -1,0 +1,37 @@
+{{ define "main" }}
+  <section>
+    <div class="xl:container pt-16 pb-24 mx-auto">
+      <div class="grid grid-cols-2 gap-16">
+        <div>
+          <h1 class="text-6xl font-semibold text-[#101828] mb-6">{{ .Params.subtitle }}</h1>
+          {{ range .Params.descriptions }}
+          <p class="text-xl text-[#475467] mb-6">{{ . }}</p>
+          {{ end }}
+        </div>
+        <div>
+          <img src="{{ .Params.profile_image }}" width="100%" height="100%">
+        </div>
+      </div>
+      <div class="grid grid-cols-2 items-center gap-16 my-24">
+        {{ with .Params.job }}
+        <div class="company-left">
+          <h1 class="text-6xl font-bold mb-2">{{ .title }}</h1>
+          <h4 class="text-3xl">{{ .description }}</h4>
+        </div>
+        <div class="company-right">
+          {{ with .company_image }}
+          <img src="{{.}}" width="100%" height="100%">
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+      <div class="flex justify-between bg-[#F9FAFB] rounded-2xl p-16">
+        <div>
+          <h1 class="text-3xl font-semibold text-[#101828] mb-2">Still have questions?</h1>
+          <p class="text-lg text-[#475467]">Can’t find the answer you’re looking for? Please chat to me.</p>
+        </div>
+        <button class="bg-[#0A39AA] h-full rounded-md text-base text-white text-md leading-6 px-4 py-3">Get in touch</button>
+      </div>  
+    </div>
+  </section>
+{{ end }}

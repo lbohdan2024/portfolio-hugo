@@ -1,0 +1,77 @@
+{{ define "main" }}
+<section>
+  <div class="xl:container mx-auto pt-16 pb-24">
+    <div class="w-[768px] text-center mb-16 mx-auto">
+      <h6 class="text-lg font-semibold text-[#0A39AA] mb-3">Published {{ .Params.date }}</h6>
+      <h1 class="text-5xl font-bold text-[#101828] mb-6">{{ .Params.description }}</h1>
+      <div class="text-xl text-[#475467] mb-8">{{ .Content }}</div>
+      <div class="flex justify-center">
+      {{ range .Params.tags }}
+        <div class="border border-1 border-[#667085] rounded-full px-2 mx-2">{{.}}</div>
+      {{ end }}
+      </div>
+    </div>
+
+    <div class="xl:container mx-auto">
+      <img class="mb-24" src="{{ .Params.main_image }}" width="100%" height="100%">
+      <div class="w-[768px] mx-auto">
+        {{ with .Params.introduction }}
+        <h4 class="text-3xl font-bold text-[#101828] mb-8">Introduction</h4>
+        <p class="text-base text-[#475467]">{{ .description }}</p>
+        <figure class="my-12">
+          <img src="{{ .image }}" width="100%" height="100%">
+          <figcaption>{{ .caption.title }}</figcaption>
+        </figure>
+        <p class="text-base text-[#475467]">{{ .caption.description }}</p>
+        <div class="border-l-[3px] border-[#072671] pl-5 my-12">
+          <h6 class="text-2xl font-medium italic text-[#101828] pt-2 mb-8">{{ .comment.content }}</h6>
+          <p class="text-base text-[#475467] pb-2">— {{ .comment.author }}</p>
+        </div>
+        <p class="text-base text-[#475467] mb-8">{{ .comment.description }}</p>
+        {{ end }}
+        
+        {{ with .Params.subject }}
+          {{ range . }}
+          <div class="">
+            <h4 class="text-3xl font-bold text-[#101828] mb-8">{{ .title }}</h4>
+          </div>
+          {{ end }}
+        {{ end }}
+
+        {{ with .Params.conclusion }}
+        <div class="bg-[#F9FAFB] rounded-2xl p-8 mb-12">
+          <h4 class="text-3xl font-bold text-[#101828] mb-8">Conclusion</h4>
+          <p class="text-base text-[#475467]">{{ . }}</p>
+        </div>
+        {{ end }}
+        <div class="flex justify-between border-t-[1px] border-[#EAECF0] py-6 mb-24">
+          <div class="flex items-center">
+            <img class="rounded-full" src="{{ .Params.author.image }}" width="{{ .Params.author.image_width }}" height="{{ .Params.author.image_height }}">
+            <div class="ml-4">
+              <h6 class="text-lg font-semibold text-[#072671]">{{ .Params.author.name }}</h6>
+              <p class="text-base text-[#344054]">{{ .Params.author.role }}</p>
+            </div>
+          </div>
+          <div class="flex justify-end h-fit">
+            <button class="border border-[#D0D5DD] rounded-md text-sm font-semibold text-[#98A2B3] text-md leading-6 px-2 py-1">
+              <i class="text-xl text-[#98A2B3] fa-regular fa-copy"></i> Copy
+            </button>
+            {{ range .Params.author.shared }}
+              <a href="{{ .link }}" class="border border-[#D0D5DD] rounded-md px-2 py-1 mx-2">
+                <i class="text-xl text-[#98A2B3] {{ .icon }}"></i>
+              </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between bg-[#F9FAFB] rounded-2xl p-16 mx-auto">
+        <div>
+          <h1 class="text-3xl font-semibold text-[#101828] mb-2">Still have questions?</h1>
+          <p class="text-lg text-[#475467]">Can’t find the answer you’re looking for? Please chat to me.</p>
+        </div>
+        <button class="bg-[#0A39AA] h-full rounded-md text-base text-white text-md leading-6 px-4 py-3">Get in touch</button>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
