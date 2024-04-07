@@ -1,0 +1,18 @@
+{{ $videoid:= .Id }}
+{{ $class:= .Class }}
+{{ $style:= .Style }}
+{{ $width:= .Width }}
+{{ $height:= .Height }}
+{{ $attr:= .Attr }}
+
+<div
+  {{ with $class }}class="{{ . }}"{{ end }}
+  style="margin-bottom: 8px; {{ with $width }} width:{{ .| safeCSS }};
+  {{ end }}{{ with $height }} height:{{ .| safeCSS }};
+  {{ end }}{{ with $style }}{{ .| safeCSS }}{{ end }}">
+  {{/*  <youtube-lite
+    videoid="{{ $videoid }}"
+    {{ with $attr }}{{ . | safeHTMLAttr }}{{ end }}></youtube-lite>  */}}
+    <iframe src="https://www.youtube.com/embed/6RYn6mgq77s"
+          style="width: 100%; height: 100%; border-radius: 12px;"></iframe>
+</div>

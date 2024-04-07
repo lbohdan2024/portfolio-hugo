@@ -1,4 +1,6 @@
 {{ range site.Params.plugins.js }}
 {{ $style := resources.Get .link }}
-<script href="{{ .link }}" type="application/javascript"></script>
+<script href="/{{ .link }}" type="application/javascript"></script>
 {{ end }}
+
+<script href="https://github.com/gethugothemes/hugo-modules/blob/master/videos/assets/plugins/youtube-lite.js" type="application/javascript"></script>

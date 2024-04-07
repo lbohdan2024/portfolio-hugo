@@ -14,6 +14,8 @@ name = "Adam Warski"
 
 [[params.plugins.js]]
   link = "js/tab.js"
+[[params.plugins.js]]
+  link = "plugins/youtube-lite.js"
 
 # Menus
 [menus]

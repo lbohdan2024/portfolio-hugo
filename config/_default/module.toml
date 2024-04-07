@@ -5,3 +5,18 @@ min = "0.106.0"
 
 [[imports]]
   path = "github.com/gethugothemes/hugo-modules/tab"
+
+[[imports]]
+  path = "github.com/gethugothemes/hugo-modules/videos"
+
+[[mounts]]
+source="assets/js"
+target="assets/js"
+
+[[mounts]]
+source="assets/plugins"
+target="assets/plugins"
+
+[[mounts]]
+source="assets/sass"
+target="assets/sass"
