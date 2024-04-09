@@ -1,15 +1,15 @@
 {{ define "main" }}
   <section>
-    <div class="xl:container mx-auto py-16">
+    <div class="container mx-auto py-16">
       <div class="introduction grid grid-cols-2 gap-8">
         <div class="intro-left flex items-center">
           <div class="content">
             <div class="w-fit text-md text-[#344054] border border-1 border-[#667085] rounded-lg px-3">
               Crafting app to perfection <i class="text-[#667085] fa-solid fa-arrow-right"></i>
             </div>
-            <h1 class="text-6xl leading-tight font-bold my-6">{{.Params.Description}}</h1>
-            <div class="text-xl leading-6 text-[#475467]">{{ .Content }}</div>
-            <button class="bg-[#0A39AA] rounded-md text-white text-md leading-6 px-5 py-3 my-12">Get in touch</button>
+            <h1 class="text-6xl leading-tight font-semibold my-6">{{.Params.Description}}</h1>
+            <div class="text-xl text-[#475467]">{{ .Content }}</div>
+            <button class="bg-[#0A39AA] rounded-md text-white text-md px-5 py-3 my-12">Get in touch</button>
             <div class="stars flex items-center">
               <div class="w-[136px] h-[40px] relative mr-4">
                 {{ with .Params.images }}
@@ -58,7 +58,7 @@
       <div class="company grid grid-cols-2 items-center gap-16 my-24">
         {{ with .Params.job }}
         <div class="company-left">
-          <h1 class="text-6xl font-bold mb-2">{{ .title }}</h1>
+          <h1 class="text-6xl font-semibold mb-2">{{ .title }}</h1>
           <h4 class="text-3xl">{{ .description }}</h4>
         </div>
         <div class="company-right">
@@ -106,7 +106,7 @@
             <p class="text-base text-[#475467] mb-6">{{.description}}</p>
             <div class="flex items-center">
             {{ range .tags }}
-              <div class="border border-1 border-[#667085] rounded-full px-2 mr-2">{{.}}</div>
+              {{ partial "badge.html" (dict "Type" .) }}
             {{ end }}
             </div>
           </div>
@@ -133,7 +133,7 @@
               <p class="text-base text-[#475467] mb-6">{{.description}}</p>
               <div class="flex flex-wrap items-center">
               {{ range .tags }}
-                <div class="border border-1 border-[#667085] rounded-full px-2 mr-2 my-1">{{.}}</div>
+                {{ partial "badge.html" (dict "Type" .) }}
               {{ end }}
               </div>
             </div>

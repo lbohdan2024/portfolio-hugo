@@ -1,5 +1,5 @@
-<div class="xl:container flex justify-between items-center py-6 mx-auto">
-  <h1 class="text-2xl leading-8 font-bold">
+<div class="container flex justify-between items-center py-6 mx-auto">
+  <h1 class="text-2xl font-semibold">
     <a href="/">{{ site.Params.name }}</a>
   </h1>
 
@@ -7,9 +7,9 @@
 		<nav class="menu">
 			{{ range . }}
 				{{ if $.IsMenuCurrent .Menu . }}
-					<a class="text-xl leading-6 px-4 active:text-[#0A39AA]" aria-current="page" href="{{ .URL }}">{{ .Name }}</a>
+					<a class="text-base font-semibold pl-4 lg:pl-8 hover:text-[#0A39AA] active:text-[#0A39AA]" aria-current="page" href="{{ .URL }}">{{ .Name }}</a>
 				{{ else }}
-					<a class="text-xl leading-6 px-4 active:text-[#0A39AA]" href="{{ .URL }}">{{ .Name }}</a>
+					<a class="text-base font-semibold pl-4 lg:pl-8 hover:text-[#0A39AA] active:text-[#0A39AA]" href="{{ .URL }}">{{ .Name }}</a>
 				{{ end }} 
 			{{ end }}
 		</nav>

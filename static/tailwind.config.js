@@ -2,13 +2,16 @@
 module.exports = {
   content: ["../content/*.md", "../layouts/**/*.html"],
   theme: {
-    center: true,
-    screens: {
-      sm: '600px',
-      md: '728px',
-      lg: '984px',
-      xl: '1240px',
-      '2xl': '1240px',
+    container: {
+      padding: '32px',
+      center: true,
+      screens: {
+        sm: '100%',
+        md: '100%',
+        lg: '100%',
+        xl: '1280px',
+        '2xl': '1280px',
+      },
     },
     extend: {},
   },

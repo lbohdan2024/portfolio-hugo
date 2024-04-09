@@ -37,7 +37,7 @@
             <p class="text-base text-[#475467] mb-4">{{.description}}</p>
             <div class="flex flex-wrap items-center">
             {{ range .tags }}
-              <div class="border border-1 border-[#667085] rounded-full px-2 mr-2 my-2">{{.}}</div>
+              {{ partial "badge.html" (dict "Type" .) }}
             {{ end }}
             </div>  
           </div>
@@ -57,7 +57,7 @@
             <p class="text-base text-[#475467] mb-6">{{.description}}</p>
             <div class="flex items-center">
             {{ range .tags }}
-              <div class="border border-1 border-[#667085] rounded-full px-2 mr-2">{{.}}</div>
+              {{ partial "badge.html" (dict "Type" .) }}
             {{ end }}
             </div>
           </div>
@@ -81,7 +81,7 @@
               <p class="text-base text-[#475467] mb-6">{{.description}}</p>
               <div class="flex items-center">
               {{ range .tags }}
-                <div class="border border-1 border-[#667085] rounded-full px-2 mr-2">{{.}}</div>
+                {{ partial "badge.html" (dict "Type" .) }}
               {{ end }}
               </div>
             </div>

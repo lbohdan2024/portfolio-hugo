@@ -7,7 +7,7 @@
       <div class="text-xl text-[#475467] mb-8">{{ .Content }}</div>
       <div class="flex justify-center">
       {{ range .Params.tags }}
-        <div class="border border-1 border-[#667085] rounded-full px-2 mx-2">{{.}}</div>
+        {{ partial "badge.html" (dict "Type" .) }}
       {{ end }}
       </div>
     </div>
