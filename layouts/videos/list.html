@@ -1,15 +1,15 @@
 {{ define "main" }}
 <section>
-  <div class="xl:container mx-auto py-16">
-    <h6 class="text-lg text-[#0A39AA] mb-3">{{ .Title }}</h6>
-    <h1 class="text-5xl font-bold text-[#101828] mb-6">
-      {{ .Params.subtitle }}
-    </h1>
-    <p class="text-xl text-[#475467]">{{ .Params.description }}</p>
-  </div>
+  <div class="container mx-auto">
+    <div class="py-16">
+      <h6 class="text-lg text-[#0A39AA] mb-3">{{ .Title }}</h6>
+      <h1 class="text-5xl font-bold text-[#101828] mb-6">
+        {{ .Params.subtitle }}
+      </h1>
+      <p class="text-xl text-[#475467]">{{ .Params.description }}</p>
+    </div>
 
-  <div class="tab" data-tab-group="tab-group-name">
-    <div class="xl:container mx-auto">
+    <div class="tab" data-tab-group="tab-group-name">
       <ul class="tab-nav flex-wrap" data-tab-nav>
         {{ range $index, $element := .Params.categories }}
         <li class="tab-nav-item text-lg font-semibold" data-tab="{{add 0 $index}}" tabindex="0">
@@ -17,54 +17,54 @@
         </li>
         {{ end }}
       </ul>
-    </div>
 
-    <div class="content">
-      <div class="content-top mt-16 mb-12">
-        <div class="xl:container main-article grid grid-cols-2 gap-8 mx-auto">
-          {{ with .Params.main_video }}
-          <div>
-            {{ partial "youtube-lite.html" (dict "Id" "6RYn6mgq77s" "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style" "" "Attr" "") }}
-          </div>
-          <div>
-            <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format ":date_medium"}}</h6>
-            <a class="flex justify-between items-center my-2" href="{{.link}}">
-              <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
-            </a>
-            <p class="text-base text-[#475467] mb-4">{{.description}}</p>
-            <div class="flex flex-wrap items-center">
-            {{ range .tags }}
-              {{ partial "badge.html" (dict "Type" .) }}
-            {{ end }}
+      <div class="content">
+        <div class="content-top mt-16 mb-12">
+          <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+            {{ with .Params.main_video }}
+            <div>
+              {{ partial "youtube-lite.html" (dict "Id" "6RYn6mgq77s" "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style" "" "Attr" "") }}
             </div>
-          </div>
-          {{ end }}
-        </div>
-      </div>
-      <div class="content-main">
-        <div class="xl:container grid grid-cols-3 gap-8 mb-24 mx-auto">
-          {{ range .Params.videos.list }}
-          <div>
-            {{ partial "youtube-lite.html" (dict "Id" "6RYn6mgq77s" "Class" "mx-auto" "Width" "100%" "Height" "240px" "Style" "" "Attr" "") }}
-            <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format ":date_medium"}}</h6>
-            <a class="flex justify-between items-center my-2" href="{{.link}}">
-              <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
-            </a>
-            <p class="text-base text-[#475467] mb-6">{{.description}}</p>
-            <div class="flex flex-wrap items-center">
-            {{ range .tags }}
-              {{ partial "badge.html" (dict "Type" .) }}
-            {{ end }}
+            <div>
+              <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format ":date_medium"}}</h6>
+              <a class="flex justify-between items-center my-2" href="{{.link}}">
+                <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+              </a>
+              <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+              <div class="flex flex-wrap items-center">
+              {{ range .tags }}
+                {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+              </div>
             </div>
+            {{ end }}
           </div>
-          {{ end }}
         </div>
-        <div class="xl:container flex justify-between bg-[#F9FAFB] rounded-2xl p-16 mb-24 mx-auto">
-          <div>
-            <h1 class="text-3xl font-semibold text-[#101828] mb-2">Still have questions?</h1>
-            <p class="text-lg text-[#475467]">Can’t find the answer you’re looking for? Please chat to me.</p>
+        <div class="content-main">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+            {{ range .Params.videos.list }}
+            <div>
+              {{ partial "youtube-lite.html" (dict "Id" "6RYn6mgq77s" "Class" "mx-auto" "Width" "100%" "Height" "240px" "Style" "" "Attr" "") }}
+              <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format ":date_medium"}}</h6>
+              <a class="flex justify-between items-center my-2" href="{{.link}}">
+                <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+              </a>
+              <p class="text-base text-[#475467] mb-6">{{.description}}</p>
+              <div class="flex flex-wrap items-center">
+              {{ range .tags }}
+                {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+              </div>
+            </div>
+            {{ end }}
           </div>
-          <button class="bg-[#0A39AA] h-full rounded-md text-base text-white text-md leading-6 px-4 py-3">Get in touch</button>
+          <div class="flex flex-wrap justify-between bg-[#F9FAFB] rounded-2xl p-8 md:p-16 gap-4">
+            <div>
+              <h1 class="text-3xl font-semibold text-[#101828] mb-2">Still have questions?</h1>
+              <p class="text-lg text-[#475467]">Can’t find the answer you’re looking for? Please chat to me.</p>
+            </div>
+            <button class="w-full sm:w-auto bg-[#0A39AA] h-full rounded-md text-base text-white text-md leading-6 px-4 py-3">Get in touch</button>
+          </div>
         </div>
       </div>
     </div>

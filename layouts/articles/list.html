@@ -1,6 +1,6 @@
 {{ define "main" }}
 <section>
-  <div class="xl:container mx-auto py-16">
+  <div class="container mx-auto py-16">
     <h6 class="text-lg font-semibold text-[#0A39AA] mb-3">{{ .Title }}</h6>
     <h1 class="text-5xl font-bold text-[#101828] mb-6">
       {{ .Params.subtitle }}
@@ -9,7 +9,7 @@
   </div>
 
   <div class="tab" data-tab-group="tab-group-name">
-    <div class="xl:container mx-auto">
+    <div class="container mx-auto">
       <ul class="tab-nav flex-wrap" data-tab-nav>
         {{ range $index, $element := .Params.categories }}
         <li class="tab-nav-item text-lg font-semibold" data-tab="{{add 0 $index}}" tabindex="0">
@@ -25,7 +25,7 @@
     </div>  */}}
     <div class="content">
       <div class="content-top mt-16 mb-12">
-        <div class="xl:container main-article grid grid-cols-2 gap-8 mx-auto">
+        <div class="container main-article grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-8 mx-auto">
           {{ with .Params.main_article }}
           <div><img class="" src="{{.image}}" width="100%" height="100%"></div>
           <div>
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="content-main">
-        <div class="xl:container grid grid-cols-3 gap-8 mb-24 mx-auto">
+        <div class="container grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-24 mx-auto">
           {{ range .Params.articles.list }}
           <div>
             <img class="mb-5" src="{{.image}}" width="100%" height="100%">
@@ -55,7 +55,7 @@
               <i class="text-2xl text-[#101828] fa-solid fa-arrow-right"></i>
             </a>
             <p class="text-base text-[#475467] mb-6">{{.description}}</p>
-            <div class="flex items-center">
+            <div class="flex flex-wrap items-center">
             {{ range .tags }}
               {{ partial "badge.html" (dict "Type" .) }}
             {{ end }}
@@ -65,11 +65,11 @@
         </div>
         <div class="bg-[#F9FAFB] py-24">
           {{ with .Params.featured_articles }}
-          <div class="xl:container mb-16 mx-auto">
+          <div class="container mb-16 mx-auto">
             <h1 class="text-3xl font-semibold text-[#101828] mb-5">{{.title}}</h1>
             <p class="text-xl text-[#475467]">{{.description}}</p>
           </div>
-          <div class="xl:container grid grid-cols-3 gap-8 mx-auto">
+          <div class="container grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mx-auto">
             {{ range .list }}
             <div>
               <img class="mb-5" src="{{.image}}" width="100%" height="100%">
@@ -79,7 +79,7 @@
                 <i class="text-2xl text-[#101828] fa-solid fa-arrow-right"></i>
               </a>
               <p class="text-base text-[#475467] mb-6">{{.description}}</p>
-              <div class="flex items-center">
+              <div class="flex flex-wrap items-center">
               {{ range .tags }}
                 {{ partial "badge.html" (dict "Type" .) }}
               {{ end }}

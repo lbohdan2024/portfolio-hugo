@@ -10,6 +10,9 @@ footer {
   background: #101828;
 }
 
-// .intro-profile {
-//   background: url('../images/profile.png');
+// .talk-bg {
+//   background: url('{{- (resources.Get "").RelPermalink -}}');
+//   height: 480px;
+//   background-position: center;
+//   background-size: cover;
 // }

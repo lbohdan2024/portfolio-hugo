@@ -20,3 +20,7 @@ target="assets/plugins"
 [[mounts]]
 source="assets/sass"
 target="assets/sass"
+
+[[mounts]]
+source="assets/images"
+target="assets/images"

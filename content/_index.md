@@ -2,7 +2,7 @@
 title: Home
 description: Hello, I’m Adam, Software Developer
 profile_image: images/profile.png
-profile_description: Software Developer & co-founder of agancy. Early staff at Spotify and Amazon.
+profile_description: Software Developer & co-founder of agancy. Early staff at Spotify.
 job:
   title: Creative Designer & Senior Developer
   description: Globalbank

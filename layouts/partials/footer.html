@@ -19,12 +19,12 @@
     </div>
   </div>
 
-  <div class="md:container mx-auto">
+  <div class="container mx-auto">
     <hr class="border-[#182230]">
-    <div class="flex justify-between items-center py-8">
-      <p class="text-base text-[#D0D5DD] m-0">&copy; {{ now.Year }}. All rights reserved.</p>
+    <div class="grid sm:flex justify-center sm:justify-between gap-4 sm:gap-0 items-center py-8">
+      <p class="order-2 sm:order-1 text-base text-[#D0D5DD] m-0">&copy; {{ now.Year }}. All rights reserved.</p>
 
-      <div>
+      <div class="order-1 sm:order-2">
         {{ range site.Params.social }}
           <a class="ml-4" href="{{.link | safeURL}}"><i class="text-lg text-[#98A1B2] {{ .icon }}"></i></a>
         {{ end }}
