@@ -8,13 +8,13 @@
     </div>
     <div class="mb-24">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 mx-0 lg:mx-24">
-        {{ range .Params.talks }}
+        {{ range .Pages }}
         <div class="border border-1 border-[#A6A8AC] rounded-2xl p-6">
-          <h6 class="text-xl font-semibold text-[#101828] mb-2"># {{.number}}</h6>
-          <p class="text-sm font-semibold text-[#072671] mb-2">{{.position}} • {{.date | time.Format ":date_medium"}}</p>
-          <h4 class="text-lg font-semibold text-[#101828] mb-2">{{.title}}</h4>
+          <h6 class="text-xl font-semibold text-[#101828] mb-2"># {{.Params.Number}}</h6>
+          <p class="text-sm font-semibold text-[#072671] mb-2">{{.Params.Position}} • {{.Date.Format "2 Jan 2006"}}</p>
+          <h4 class="text-lg font-semibold text-[#101828] mb-2">{{.Params.Title}}</h4>
           <div class="flex items-center">
-          {{ range .files }}
+          {{ range .Params.Files }}
             <a class="text-2xl text-[#072671] mr-2" href="{{.link}}"><i class="{{.icon}}"></i></a>
           {{ end }}
           </div>

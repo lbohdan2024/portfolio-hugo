@@ -1,6 +1,12 @@
-{{ range site.Params.plugins.js }}
-{{ $style := resources.Get .link }}
-<script href="/{{ .link }}" type="application/javascript"></script>
+{{ with resources.Get "js/tab.js" | js.Build "tab.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}"></script>
 {{ end }}
 
-<script href="https://github.com/gethugothemes/hugo-modules/blob/master/videos/assets/plugins/youtube-lite.js" type="application/javascript"></script>
+{{ with resources.Get "js/modal.js" | js.Build "modal.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}"></script>
+{{ end }}
+
+{{/*  {{ with resources.Get "plugins/youtube-lite.js" | js.Build "youtube-lite.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}"></script>
+{{ end }}
+  */}}

@@ -42,7 +42,7 @@ videos:
       publication: "Lana Steiner"
       tags: ["Development", "Research"]
       date: "2024-01-31T23:44:58-08:00"
-      link: videos/2024-01-19-How-to-get-started
+      link: videos/2024-01-19-Learn-Javascript-in-1 Hour
     - title: Learn Javascript in 1 Hour
       description: Learn JavaScript basics, this beginner-friendly tutorial you need to start coding.
       image: "6RYn6mgq77s"
@@ -57,5 +57,4 @@ videos:
       tags: ["Development", "Research"]
       date: "2024-01-31T23:44:58-08:00"
       link: videos/2024-01-19-How-to-get-started
-
 --- 

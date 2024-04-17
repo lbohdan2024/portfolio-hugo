@@ -17,7 +17,25 @@
         </li>
         {{ end }}
       </ul>
-
+      <div class="tab hidden" data-tab-group="tab-group-name">
+        <ul class="tab-nav" data-tab-nav>
+          <li class="tab-nav-item active" data-tab="0" tabindex="0">Tab 1</li>
+          <li class="tab-nav-item" data-tab="1" tabindex="-1">Tab 2</li>
+          <li class="tab-nav-item" data-tab="2" tabindex="-1">Tab 3</li>
+        </ul>
+        <div class="tab-content" data-tab-content>
+          <div class="tab-content-panel active" data-tab-panel="0">
+            Tab 1 content
+          </div>
+          <div class="tab-content-panel" data-tab-panel="1">
+            Tab 2 content
+          </div>
+          <div class="tab-content-panel" data-tab-panel="2">
+            Tab 3 content
+          </div>
+        </div>
+      </div>
+  
       <div class="content">
         <div class="content-top mt-16 mb-12">
           <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
@@ -42,16 +60,16 @@
         </div>
         <div class="content-main">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
-            {{ range .Params.videos.list }}
+            {{ range .Pages }}
             <div>
               {{ partial "youtube-lite.html" (dict "Id" "6RYn6mgq77s" "Class" "mx-auto" "Width" "100%" "Height" "240px" "Style" "" "Attr" "") }}
-              <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format ":date_medium"}}</h6>
-              <a class="flex justify-between items-center my-2" href="{{.link}}">
-                <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+              <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}</h6>
+              <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+                <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
               </a>
-              <p class="text-base text-[#475467] mb-6">{{.description}}</p>
+              <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
               <div class="flex flex-wrap items-center">
-              {{ range .tags }}
+              {{ range .Params.Tags }}
                 {{ partial "badge.html" (dict "Type" .) }}
               {{ end }}
               </div>

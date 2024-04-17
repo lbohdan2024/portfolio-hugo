@@ -14,73 +14,8 @@ main_article:
 articles:
   title: Latest articles
   description: All of my long-form thoughts on programming, career and more.
-  list:
-    - title: "Migrating to Linear 101"
-      description: Linear helps streamline software projects, sprints, tasks, and bug tracking. Here’s how to get started.
-      image: images/article-1.png
-      publication: "Phoenix Baker"
-      tags: ["Product", "Tools", "SaaS"]
-      date: "2024-01-19T23:44:58-08:00"
-      link: articles/2024-01-19-Migrating-to-Linear-101
-    - title: What is wireframing?
-      description: Introduction to Wireframing and its Principles. Learn from the best in the industry.
-      image: images/article-2.png
-      publication: "Candice Wu"
-      tags: ["Design", "Research"]
-      date: "2024-01-15T20:12:56-00:00"
-      link: articles/2024-01-15-What-is-wireframing
-    - title: Building your API stack
-      description: The rise of RESTful APIs has been met by a rise in tools for creating, testing, and managing them.
-      image: images/article-3.png
-      publication: "Lana Steiner"
-      tags: ["Software Development", "Tools"]
-      date: "2024-01-18T05:24:28-11:00"
-      link: articles/2024-01-18-Building-your-API-stack
-    - title: "PM mental models"
-      description: Mental models are simple expressions of complex processes or relationships.
-      image: images/article-4.png
-      publication: "Demi WIlkinson"
-      tags: ["Product", "Research", "Frameworks"]
-      date: "2024-01-19T23:44:58-08:00"
-      link: articles/2024-01-19-PM-mental-models
-    - title: Bill Walsh leadership lessons
-      description: Like to know the secrets of transforming a 2-14 team into a 3x Super Bowl winning Dynasty?
-      image: images/article-5.png
-      publication: Alec Whitten
-      tags: ["Leadership", "Management"]
-      date: "2024-01-15T20:12:56-00:00"
-      link: articles/2024-01-15-What-is-wireframing
-    - title: How collaboration lessons
-      description: Collaboration can make our teams stronger, and our individual development better.
-      image: images/article-6.png
-      publication: Natali Craig
-      tags: ["Software Development", "Responsive"]
-      date: "2024-01-18T05:24:28-11:00"
-      link: articles/2024-01-18-Building-your-API-stack
 featured_articles:
   title: Featured articles
   description: The featured news, technologies, and resources from our team.
-  list:
-    - title: "Migrating to Linear 101"
-      description: Linear helps streamline software projects, sprints, tasks, and bug tracking. Here’s how to get started.
-      image: images/article-1.png
-      publication: "Phoenix Baker"
-      tags: ["Product", "Tools", "SaaS"]
-      date: "2024-01-19T23:44:58-08:00"
-      link: articles/2024-01-19-Migrating-to-Linear-101
-    - title: What is wireframing?
-      description: Introduction to Wireframing and its Principles. Learn from the best in the industry.
-      image: images/article-2.png
-      publication: "Candice Wu"
-      tags: ["Design", "Research"]
-      date: "2024-01-15T20:12:56-00:00"
-      link: articles/2024-01-15-What-is-wireframing
-    - title: Building your API stack
-      description: The rise of RESTful APIs has been met by a rise in tools for creating, testing, and managing them.
-      image: images/article-3.png
-      publication: "Lana Steiner"
-      tags: ["Software Development", "Tools"]
-      date: "2024-01-18T05:24:28-11:00"
-      link: articles/2024-01-18-Building-your-API-stack
-
+  featured: true
 ---
