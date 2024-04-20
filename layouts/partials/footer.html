@@ -6,7 +6,7 @@
 
     <div class="flex justify-center">
       {{ with site.Menus.footer }}
-        <div class="menu">
+        <div class="menu flex justify-center flex-wrap sm:block gap-y-3">
           {{ range . }}
             {{ if $.IsMenuCurrent .Menu . }}
               <a class="text-base font-semibold text-[#D0D5DD] px-4 hover:text-[#98A1B2] active:text-[#0A39AA]" aria-current="page" href="{{ .URL }}">{{ .Name }}</a>

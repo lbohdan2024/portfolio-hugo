@@ -1,6 +1,7 @@
 // $head-font: 'Inter', sans-serif;
 // $content-font: 'Inter', sans-serif;
 @import 'tab';
+@import 'images';
 
 html > * {
   font-family: 'Inter', sans-serif;
@@ -10,9 +11,64 @@ footer {
   background: #101828;
 }
 
-// .talk-bg {
-//   background: url('{{- (resources.Get "").RelPermalink -}}');
-//   height: 480px;
-//   background-position: center;
-//   background-size: cover;
-// }
+.content {
+  h5 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #101828;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #475467;
+    margin-bottom: 48px;
+  }
+  img {
+    width: 100%;
+  }
+  blockquote {
+    padding: 4px 0 4px 20px;
+    border-left: 2px solid #072671;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 48px;
+    P {
+      margin: 0;
+      &::before {
+        content: "\f10d";
+        font-family: "font awesome 6 free";
+        font-weight: 600;
+        border: 0;
+        margin-right: 2px;
+        // color: #2ba283;
+      }
+      &::after {
+        content: "\f10e";
+        font-family: "font awesome 6 free";
+        font-weight: 600;
+        border: 0;
+        margin-left: 2px;
+      }
+    }
+  }
+  .highlight {
+    margin-bottom: 48px;
+    overflow-x: auto;
+    pre {
+      width:  fit-content;
+    }
+    // media screen and (max-width: 768px) {
+    // }
+  }
+  ol {
+    font-size: 18px;
+    line-height: 28px;
+    color: #475467;
+    margin-bottom: 48px;
+    list-style: decimal;
+    padding: 0 16px;
+  }
+}

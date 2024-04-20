@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section>
+  <div class="container mx-auto pt-16 pb-24">
+    <div class="lg:w-[768px] text-center mb-16 mx-auto px-0 sm:px-12 lg:px-0">
+      <h6 class="text-lg font-semibold text-[#0A39AA] mb-3">Published {{ .Date.Format "2 Jan 2006" }}</h6>
+      <h1 class="text-4xl md:text-5xl font-bold text-[#101828] mb-6">{{ .Params.title }}</h1>
+      <div class="flex felx-wrap justify-center">
+      {{ range .Params.tags }}
+        {{ partial "badge.html" (dict "Type" .) }}
+      {{ end }}
+      </div>
+    </div>
+
+    <div class="container mx-auto">
+      <div class="content lg:w-[720px] mx-auto">
+        {{.Content}}
+      </div>
+
+      <div class="flex flex-wrap justify-between bg-[#F9FAFB] rounded-2xl p-8 md:p-16 gap-4">
+        <div>
+          <h1 class="text-3xl font-semibold text-[#101828] mb-2">Still have questions?</h1>
+          <p class="text-lg text-[#475467]">Can’t find the answer you’re looking for? Please chat to me.</p>
+        </div>
+        <button class="w-full sm:w-auto bg-[#0A39AA] h-full rounded-md text-base text-white text-md leading-6 px-4 py-3">Get in touch</button>
+      </div>  
+    </div>
+  </div>
+</section>
+{{ end }}

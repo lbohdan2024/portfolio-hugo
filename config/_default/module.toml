@@ -9,6 +9,9 @@ min = "0.106.0"
 [[imports]]
   path = "github.com/gethugothemes/hugo-modules/videos"
 
+[[imports]]
+path = "github.com/gethugothemes/hugo-modules/images"
+
 [[mounts]]
 source="assets/js"
 target="assets/js"

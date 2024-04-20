@@ -2,7 +2,7 @@
 <section>
   <div class="container mx-auto py-16">
     <h6 class="text-lg font-semibold text-[#0A39AA] mb-3">{{ .Title }}</h6>
-    <h1 class="text-5xl font-bold text-[#101828] mb-6">
+    <h1 class="text-4xl md:text-5xl font-bold text-[#101828] mb-6">
       {{ .Params.subtitle }}
     </h1>
     <p class="text-xl text-[#475467]">{{ .Params.description }}</p>
@@ -10,31 +10,27 @@
 
   <div class="tab" data-tab-group="tab-group-name">
     <div class="container mx-auto">
-      <ul class="tab-nav flex-wrap" data-tab-nav>
+      <ul class="hidden sm:flex tab-nav flex-wrap" data-tab-nav>
         {{ range $index, $element := .Params.categories }}
         <li class="tab-nav-item text-lg font-semibold" data-tab="{{add 0 $index}}" tabindex="0">
           {{ $element }}
         </li>
         {{ end }}
       </ul>
-    </div>
-    <div class="tab hidden" data-tab-group="tab-group-name">
-      <ul class="tab-nav" data-tab-nav>
-        <li class="tab-nav-item active" data-tab="0" tabindex="0">Tab 1</li>
-        <li class="tab-nav-item" data-tab="1" tabindex="-1">Tab 2</li>
-        <li class="tab-nav-item" data-tab="2" tabindex="-1">Tab 3</li>
-      </ul>
-      <div class="tab-content" data-tab-content>
-        <div class="tab-content-panel active" data-tab-panel="0">
-          Tab 1 content
+      <div class="tab-content hidden" data-tab-content>
+        {{ range $index, $element := .Params.categories }}
+        <div class="tab-content-panel" data-tab-panel="{{$index}}">
+          {{ $element }}
         </div>
-        <div class="tab-content-panel" data-tab-panel="1">
-          Tab 2 content
-        </div>
-        <div class="tab-content-panel" data-tab-panel="2">
-          Tab 3 content
-        </div>
+        {{ end }}
       </div>
+      <select class="block sm:hidden tab-nav w-full rounded-md border-0 px-3 py-2 text-[#344054] shadow-sm ring-1 ring-inset ring-[#D0D5DD] placeholder:text-[#667085] focus:ring-2 focus:ring-inset focus:ring-[#475467] focus-visible:outline-none" data-tab-nav>
+        {{ range $index, $element := .Params.categories }}
+        <option class="tab-nav-item text-lg font-semibold" data-tab="{{add 0 $index}}" tabindex="0">
+          {{ $element }}
+        </option>
+        {{ end }}
+      </select>
     </div>
     <div class="content">
       <div class="content-top mt-16 mb-12">
@@ -52,7 +48,7 @@
             {{ range .tags }}
               {{ partial "badge.html" (dict "Type" .) }}
             {{ end }}
-            </div>  
+            </div>
           </div>
           {{ end }}
         </div>
@@ -60,20 +56,7 @@
       <div class="content-main">
         <div class="container grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-24 mx-auto">
           {{ range .Pages }}
-          <div>
-            <img class="mb-5" src="{{.Params.Image}}" width="100%" height="100%">
-            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}</h6>
-            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
-              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
-              <i class="text-2xl text-[#101828] fa-solid fa-arrow-right"></i>
-            </a>
-            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
-            <div class="flex flex-wrap items-center">
-            {{ range .Params.Tags }}
-              {{ partial "badge.html" (dict "Type" .) }}
-            {{ end }}
-            </div>
-          </div>
+            {{ .Render "post" }}
           {{ end }}
         </div>
         {{ if .Params.featured_articles.featured }}
@@ -84,20 +67,7 @@
           </div>
           <div class="container grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mx-auto">
             {{ range where .Pages "Params.Featured" true }}
-            <div>
-              <img class="mb-5" src="{{.Params.Image}}" width="100%" height="100%">
-              <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}</h6>
-              <a class="flex justify-between items-center my-2" href="{{.Permalink}}">
-                <h4 class="text-2xl font-semibold text-[#101828]">{{.Title}}</h4>
-                <i class="text-2xl text-[#101828] fa-solid fa-arrow-right"></i>
-              </a>
-              <p class="text-base text-[#475467] mb-6">{{.Description}}</p>
-              <div class="flex flex-wrap items-center">
-              {{ range .Params.Tags }}
-                {{ partial "badge.html" (dict "Type" .) }}
-              {{ end }}
-              </div>
-            </div>
+              {{ .Render "post" }}
             {{ end }}
           </div>
         </div>

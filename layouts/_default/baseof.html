@@ -4,7 +4,7 @@
     {{ partial "meta.html" . }}
   </head>
 
-  <body>
+  <body class="overflow-x-hidden">
     <header class="sticky top-0 md:relative z-50 bg-white md:bg-transparent shadow-sm md:shadow-none">{{ partial "header.html" }}</header>
     <main>{{ block "main" . }} {{ end }}</main>
     {{ partial "script.html" . }}

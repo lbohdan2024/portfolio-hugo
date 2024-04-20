@@ -45,7 +45,7 @@
               <img src="{{.}}" width="100%" height="100%">
             {{ end }}
 
-            <div class="absolute w-full h-40 md:h-44 lg:h-48 bottom-0 px-6 pt-6 pb-8 backdrop-blur-lg bg-[#FFFFFF40]"></div>
+            <div class="absolute w-full h-40 md:h-44 lg:h-48 bottom-0 right-0 px-6 pt-6 pb-8 backdrop-blur-lg bg-[#FFFFFF40]"></div>
             <div class="absolute bottom-0 px-6 py-4 sm:pt-6 sm:pb-8">
               <h4 class="text-xl font-semibold leading-6 text-white mb-2">{{site.Params.name}}</h4>
               <p class="text-white mb-4 md:mb-2 lg:mb-8">{{ .Params.profile_description }}</p>
@@ -99,17 +99,23 @@
           <p class="text-xl text-center">{{.description}}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          {{ range .articles }}
+          {{/*  {{ $articles := where site.RegularPages "Type" "articles" }}
+          {{ range (where $articles "Params.Featured" true) }}
+            {{ .Render "post" }}
+          {{ end }}  */}}
+          {{/*  {{ range .articles }}  */}}
+          {{ $articles := where site.RegularPages "Type" "articles" }}
+          {{ range (where $articles "Params.Featured" true) }}
           <div>
-            <img class="mb-5" src="{{.image}}" width="100%" height="100%">
-            <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format ":date_medium"}}</h6>
-            <a class="flex justify-between items-center my-2" href="{{.link}}">
-              <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+            <img class="mb-5" src="{{.Params.image}}" width="100%" height="100%">
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}</h6>
+            <a class="flex justify-between items-center my-2" href="articles/{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
               <i class="text-2xl text-[#101828] fa-solid fa-arrow-right"></i>
             </a>
-            <p class="text-base text-[#475467] mb-6">{{.description}}</p>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
             <div class="flex flex-wrap items-center">
-            {{ range .tags }}
+            {{ range .Params.Tags }}
               {{ partial "badge.html" (dict "Type" .) }}
             {{ end }}
             </div>
@@ -127,16 +133,18 @@
         </div>
         <div class="bg-[#F9FAFB] rounded-2xl p-8">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-8">
-            {{ range .videos }}
+            {{/*  {{ range .videos }}  */}}
+            {{ $videos := where site.RegularPages "Type" "videos" }}
+            {{ range (where $videos "Params.Featured" true) }}  
             <div>
-              {{/*  {{ .image }}  */}}
-              {{/*  {{ partial "youtube-lite.html" (dict "Id" "6FIoOJm3vYA") }}  */}}
               {{ partial "youtube-lite.html" (dict "Id" "6RYn6mgq77s" "Class" "mx-auto" "Width" "100%" "Height" "240px" "Style" "" "Attr" "") }}
-              <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format ":date_medium"}}</h6>
-              <h4 class="text-2xl font-semibold text-[#101828] my-2">{{.title}}</h4>
-              <p class="text-base text-[#475467] mb-6">{{.description}}</p>
+              <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}</h6>
+              <a class="flex justify-between items-center my-2" href="videos/{{.Params.Link}}">
+                <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+              </a>
+              <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
               <div class="flex flex-wrap items-center">
-              {{ range .tags }}
+              {{ range .Params.Tags }}
                 {{ partial "badge.html" (dict "Type" .) }}
               {{ end }}
               </div>

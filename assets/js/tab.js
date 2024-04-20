@@ -37,6 +37,21 @@
         setActiveTab(tabGroup, tabName);
       });
     });
+
+    // if (window.innerWidth < 768) {
+    //   var parent = document.createElement('select');
+    //   parent.name = "tab-nav";
+    //   parent.className = "tab-nav";
+    //   // var child = document.createElement('');
+    //   tabsNavItem.forEach((tabNavItem) => {
+    //     var options = document.createElement('option');
+    //     options.className = "tab-nav-item";
+    //     options.value = tabNavItem.dataset.tab;
+    //     options.innerText = tabNavItem.innerText;
+    //     parent.appendChild(options);
+    //   })
+    //   tabsNav.replaceWith(parent);
+    // }
   });
 
   function tabsHandler(event) {
