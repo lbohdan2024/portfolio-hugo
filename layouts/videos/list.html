@@ -1,4 +1,7 @@
 {{ define "main" }}
+{{ $tags := .Site.Taxonomies.tags }}
+{{ $panels := slice "Design" "Product" "Software Engineering" "Customer Success" "Research" "Photography" "Presentation"
+"Responsive" "SaaS" "Illustrator" "Tools" "UI//UX" "Frameworks" "Managment" }}
 <section>
   <div class="container mx-auto">
     <div class="py-16">
@@ -24,7 +27,9 @@
         </div>
         {{ end }}
       </div>
-      <select class="block md:hidden tab-nav w-full rounded-md border-0 px-3 py-2 text-[#344054] shadow-sm ring-1 ring-inset ring-[#D0D5DD] placeholder:text-[#667085] focus:ring-2 focus:ring-inset focus:ring-[#475467] focus-visible:outline-none" data-tab-nav>
+      <select
+        class="block md:hidden tab-nav w-full rounded-md border-0 px-3 py-2 text-[#344054] shadow-sm ring-1 ring-inset ring-[#D0D5DD] placeholder:text-[#667085] focus:ring-2 focus:ring-inset focus:ring-[#475467] focus-visible:outline-none"
+        data-tab-nav>
         {{ range $index, $element := .Params.categories }}
         <option class="tab-nav-item text-lg font-semibold" data-tab="{{add 0 $index}}" tabindex="0">
           {{ $element }}
@@ -32,56 +37,795 @@
         {{ end }}
       </select>
 
-      <div class="">
-        <div class="content-top mt-16 mb-12">
-          <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
-            {{ with .Params.main_video }}
-            <div>
-              {{ partial "youtube-lite.html" (dict "Id" "6RYn6mgq77s" "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style" "" "Attr" "") }}
-            </div>
-            <div>
-              <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format ":date_medium"}}</h6>
-              <a class="flex justify-between items-center my-2" href="{{.link}}">
-                <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
-              </a>
-              <p class="text-base text-[#475467] mb-4">{{.description}}</p>
-              <div class="flex flex-wrap items-center">
-              {{ range .tags }}
-                {{ partial "badge.html" (dict "Type" .) }}
-              {{ end }}
+      <div class="content-main">
+        <div class="accordion-content">
+
+          <div class="accordion-panel active" data-accordion-panel="0">
+            <div class="">
+              <div class="content-top mt-16 mb-12">
+                <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                  {{ with index .Params.main_video 0 }}
+                  <div>
+                    {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px"
+                    "Style" "" "Attr" "") }}
+                  </div>
+                  <div>
+                    <h6 class="text-sm font-semibold text-[#072671]">{{ .publication }} • {{ .date | time.Format
+                      ":date_medium" }}</h6>
+                    <a class="flex justify-between items-center my-2" href="{{ .link }}">
+                      <h4 class="text-2xl font-semibold text-[#101828]">{{ .title }}</h4>
+                    </a>
+                    <p class="text-base text-[#475467] mb-4">{{ .description }}</p>
+                    <div class="flex flex-wrap items-center">
+                      {{ range .tags }}
+                      {{ partial "badge.html" (dict "Type" .) }}
+                      {{ end }}
+                    </div>
+                  </div>
+                </div>
+                {{ end }}
               </div>
             </div>
-            {{ end }}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+              {{ range .Pages }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" "6RYn6mgq77s" "Class" "mx-auto" "Width" "100%" "Height"
+                "240px" "Style" "" "Attr" "") }}
+                <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+                </h6>
+                <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .Params.Tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+            </div>
           </div>
-        </div>
-        <div class="content-main">
+
+
+          <div class="accordion-panel" data-accordion-panel="1">
+            <div class="">
+              <div class="content-top mt-16 mb-12">
+                <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                  {{ range .Params.main_video }}
+                  {{ if in .tags "Design" }}
+                  <div>
+                    {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px"
+                    "Style" "" "Attr" "") }}
+                  </div>
+                  <div>
+                    <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                      ":date_medium"}}</h6>
+                    <a class="flex justify-between items-center my-2" href="{{.link}}">
+                      <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                    </a>
+                    <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                    <div class="flex flex-wrap items-center">
+                      {{ range .tags }}
+                      {{ partial "badge.html" (dict "Type" .) }}
+                      {{ end }}
+                    </div>
+                  </div>
+                  {{ end }}
+                  {{ end }}
+
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+              {{ range .Pages }}
+              {{ if in .Params.tags "Design" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height"
+                "240px" "Style" "" "Attr" "") }}
+                <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+                </h6>
+                <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .Params.Tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+            </div>
+          </div>
+
+
+        <div class="accordion-panel" data-accordion-panel="2">
+          <div class="">
+            <div class="content-top mt-16 mb-12">
+              <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                {{ range .Params.main_video }}
+                {{ if in .tags "Product" }}
+                <div>
+                  {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px"
+                  "Style" "" "Attr" "") }}
+                </div>
+                <div>
+                  <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                    ":date_medium"}}</h6>
+                  <a class="flex justify-between items-center my-2" href="{{.link}}">
+                    <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                  </a>
+                  <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                  <div class="flex flex-wrap items-center">
+                    {{ range .tags }}
+                    {{ partial "badge.html" (dict "Type" .) }}
+                    {{ end }}
+                  </div>
+                </div>
+                {{ end }}
+                {{ end }}
+
+              </div>
+            </div>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
             {{ range .Pages }}
+            {{ if in .Params.tags "Product" }}
             <div>
-              {{ partial "youtube-lite.html" (dict "Id" "6RYn6mgq77s" "Class" "mx-auto" "Width" "100%" "Height" "240px" "Style" "" "Attr" "") }}
-              <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}</h6>
+              {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height"
+              "240px" "Style" "" "Attr" "") }}
+              <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+              </h6>
               <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
                 <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
               </a>
               <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
               <div class="flex flex-wrap items-center">
-              {{ range .Params.Tags }}
+                {{ range .Params.Tags }}
                 {{ partial "badge.html" (dict "Type" .) }}
-              {{ end }}
+                {{ end }}
               </div>
             </div>
             {{ end }}
-          </div>
-          <div class="flex flex-wrap justify-between bg-[#F9FAFB] rounded-2xl p-8 md:p-16 gap-4">
-            <div>
-              <h1 class="text-3xl font-semibold text-[#101828] mb-2">Still have questions?</h1>
-              <p class="text-lg text-[#475467]">Can’t find the answer you’re looking for? Please chat to me.</p>
-            </div>
-            <button class="w-full sm:w-auto bg-[#0A39AA] h-full rounded-md text-base text-white text-md leading-6 px-4 py-3">Get in touch</button>
+            {{ end }}
           </div>
         </div>
+
+      <div class="accordion-panel" data-accordion-panel="3">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Software Engineering" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Software Engineering" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
       </div>
+
+      <div class="accordion-panel" data-accordion-panel="4">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Customer Success" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Customer Success" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="5">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Research" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Research" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="6">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Photography" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Photography" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="7">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Presentation" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Presentation" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="8">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Responsive" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Responsive" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="9">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "SaaS" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "SaaS" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="10">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Illustrator" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Illustrator" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="11">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Tools" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Tools" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="12">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "UI/UX" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "UI//UX" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="13">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Frameworks" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Frameworks" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="accordion-panel" data-accordion-panel="14">
+        <div class="">
+          <div class="content-top mt-16 mb-12">
+            <div class="main-article grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {{ range .Params.main_video }}
+              {{ if in .tags "Managment" }}
+              <div>
+                {{ partial "youtube-lite.html" (dict "Id" .Id "Class" "mx-auto" "Width" "100%" "Height" "350px" "Style"
+                "" "Attr" "") }}
+              </div>
+              <div>
+                <h6 class="text-sm font-semibold text-[#072671]">{{.publication}} • {{.date | time.Format
+                  ":date_medium"}}</h6>
+                <a class="flex justify-between items-center my-2" href="{{.link}}">
+                  <h4 class="text-2xl font-semibold text-[#101828]">{{.title}}</h4>
+                </a>
+                <p class="text-base text-[#475467] mb-4">{{.description}}</p>
+                <div class="flex flex-wrap items-center">
+                  {{ range .tags }}
+                  {{ partial "badge.html" (dict "Type" .) }}
+                  {{ end }}
+                </div>
+              </div>
+              {{ end }}
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-24">
+          {{ range .Pages }}
+          {{ if in .Params.tags "Managment" }}
+          <div>
+            {{ partial "youtube-lite.html" (dict "Id" .Params.VideoId "Class" "mx-auto" "Width" "100%" "Height" "240px"
+            "Style" "" "Attr" "") }}
+            <h6 class="text-sm font-semibold text-[#072671]">{{.Params.Publication}} • {{.Date.Format "2 Jan 2006"}}
+            </h6>
+            <a class="flex justify-between items-center my-2" href="{{.Params.Link}}">
+              <h4 class="text-2xl font-semibold text-[#101828]">{{.Params.Title}}</h4>
+            </a>
+            <p class="text-base text-[#475467] mb-6">{{.Params.Description}}</p>
+            <div class="flex flex-wrap items-center">
+              {{ range .Params.Tags }}
+              {{ partial "badge.html" (dict "Type" .) }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+        </div>
+  </div>
+  <div class="flex flex-wrap justify-between bg-[#F9FAFB] rounded-2xl p-8 md:p-16 gap-4">
+    <div>
+      <h1 class="text-3xl font-semibold text-[#101828] mb-2">Still have questions?</h1>
+      <p class="text-lg text-[#475467]">Can’t find the answer you’re looking for? Please chat to me.</p>
     </div>
+    <button class="w-full sm:w-auto bg-[#0A39AA] h-full rounded-md text-base text-white text-md leading-6 px-4 py-3">Get
+      in touch</button>
+  </div>
   </div>
 </section>
 {{ end }}

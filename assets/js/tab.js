@@ -82,3 +82,27 @@
     tab.addEventListener("keydown", tabsHandler);
   });
 })();
+
+document.addEventListener('DOMContentLoaded', function () {
+  const accordionItems = document.querySelectorAll('.tab-nav-item');
+  const accordionPanels = document.querySelectorAll('.accordion-panel');
+
+  accordionItems.forEach(item => {
+    item.addEventListener('click', function () {
+      const panelId = this.getAttribute('data-tab');
+      const activePanel = document.querySelector(`.accordion-panel[data-accordion-panel="${panelId}"]`);
+
+      if (activePanel) {
+        accordionPanels.forEach(panel => {
+          panel.classList.remove('active');
+        });
+
+        activePanel.classList.add('active');
+      } else {
+        console.error(`Accordion panel with ID "${panelId}" not found.`);
+      }
+    });
+  });
+});
+
+
