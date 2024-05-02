@@ -15,7 +15,7 @@
     <div class="tab" data-tab-group="tab-group-name">
       <ul class="hidden md:flex tab-nav flex-wrap" data-tab-nav>
         {{ range $index, $element := .Params.categories }}
-        <li class="tab-nav-item text-lg font-semibold" data-tab="{{add 0 $index}}" tabindex="0">
+        <li class="tab-nav-item text-base font-semibold" data-tab="{{add 0 $index}}" tabindex="0">
           {{ $element }}
         </li>
         {{ end }}
@@ -31,7 +31,7 @@
         class="block md:hidden tab-nav w-full rounded-md border-0 px-3 py-2 text-[#344054] shadow-sm ring-1 ring-inset ring-[#D0D5DD] placeholder:text-[#667085] focus:ring-2 focus:ring-inset focus:ring-[#475467] focus-visible:outline-none"
         data-tab-nav>
         {{ range $index, $element := .Params.categories }}
-        <option class="tab-nav-item text-lg font-semibold" data-tab="{{add 0 $index}}" tabindex="0">
+        <option class="tab-nav-item text-base font-semibold" data-tab="{{add 0 $index}}" tabindex="0">
           {{ $element }}
         </option>
         {{ end }}
