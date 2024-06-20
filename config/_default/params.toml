@@ -28,3 +28,13 @@ link = "#"
 title = "dribbble"
 icon = "fa-brands fa-dribbble" # fontawesome icon pack : https://fontawesome.com/icons/
 link = "#"
+
+[[social]]
+title = "mastodon"
+icon = "fa-brands fa-mastodon" # fontawesome icon pack : https://fontawesome.com/icons/
+link = "#"
+
+[[social]]
+title = "bluesky"
+icon = "fa-brands fa-bluesky" # fontawesome icon pack : https://fontawesome.com/icons/
+link = "#"
