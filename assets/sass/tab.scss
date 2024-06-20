@@ -31,15 +31,22 @@
   opacity: 1;
 }
 
-.tab-content .tab-content-panel {
-  display: none;
-  padding: 1rem 0.5rem;
-}
+
 
 .tab-content .tab-content-panel p {
   margin-bottom: 0 !important;
 }
 
 .tab-content .tab-content-panel.active {
+  display: block;
+}
+
+/* Сховати всі панелі за замовчуванням */
+.accordion-panel {
+  display: none;
+}
+
+/* Показати тільки активну панель */
+.accordion-panel.active {
   display: block;
 }
